@@ -87,4 +87,30 @@ print(sqrt(16)) #제곱근
 
 #랜덤함수
 from random import *
-print(random())
+print(random()) #0.0 ~ 1.0 미만의 임의의 값 생성
+print(random()*10) # 0.0 ~ 10.0 미만
+print(int(random()*10)) # 소수점 제외
+print(int(random()*10)+1) #1 ~ 10 미만
+
+print(int(random()*45)+1) #1 ~ 45
+
+print(randrange(1,46)) #1~46미만의 임의의 값 생성
+
+print(randint(1,45))# 1~45이하 
+
+date=randint(4,28)
+print('오프라인 스터디 모임 날짜는 매월'+str(date)+'일로 선정되었습니다')
+
+#문자열
+sentence='나는 소년입니다'
+print(sentence)
+sentence2="파이썬"
+print(sentence2)
+sentence3="""
+나는 소년이고,
+파이썬
+"""
+print(sentence3)
+
+#슬라이싱
+jumin='990120-1234567'
