@@ -112,5 +112,38 @@ sentence3="""
 """
 print(sentence3)
 
-#슬라이싱
+#슬라이싱 
 jumin='990120-1234567'
+
+print('성별 : '+jumin[7])
+print('연 : '+jumin[0:2]) #0~2 직전까지 (0,1)
+print('월 : '+jumin[2:4])
+print('일 : '+jumin[4:6])
+
+print('생년월일 : '+jumin[:6]) #처음부터 6직전까지
+print('뒤 7자리 : '+jumin[7:]) #7부터 끝까지
+
+print('뒤 7자리 (뒤부터): '+jumin[-7:])
+
+#문자열 처리
+python='Python is Amazing'
+print(python.lower()) #모든문자 소문자
+print(python.upper()) #모든문자 대문자
+
+print(python[0].isupper()) #0번째 문자가 대문자인지 맞으면 true
+print(len(python)) #글자길이 len()
+
+print(python.replace('Python','Java')) #글자 교체 replace()
+
+index=python.index('n') #글자위치 조회
+print(index)
+
+index=python.index('n',index+1) #첫 조회 다음위치 
+print(index) 
+
+print(python.find('Java')) # find() : 찾으려는 값이 없을시 -1
+print(python.index('Java')) # index() : 찾으려는 값이 없을시 오류
+
+print(python.count('n')) # 찾으려는 단어 갯수
+
+#문자열 포맷
