@@ -146,6 +146,8 @@ print(python.index('Java')) # index() : 찾으려는 값이 없을시 오류
 
 print(python.count('n')) # 찾으려는 단어 갯수
 
+#-------------------------------------------------------------------------------------
+
 #문자열 포맷
 print('a'+'b')
 
@@ -171,6 +173,8 @@ age=20
 color='빨간'
 print(f'나는 {age}살이며, {color}색을 좋아합니다')
 
+#------------------------------------------------------------------------------
+
 #탈출문자
 print('백문이 불여일견 \n백견이 불여일타') #\n 줄바꿈
 
@@ -181,3 +185,86 @@ print("저는 \"나도코딩\"입니다.")
 
 # \\ : 문장 내에서 \
 print('C:\\User\\Nadocoding\\Desktop')
+
+# \r : 커서를 맨앞으로 이동
+print('Red Apple\rPine')
+
+# \b : 백스페이스
+print('Redd\bApple')
+
+# \t : 탭
+print('Red\tApple')
+
+#quiz ) 사이트별로 비밀번호를 만들어주는 프로그램
+#ex) http://naver.com
+#규칙1 : http:// 부분 제외
+#규칙2 : 처음 만나는 점 이후 부분은 제외
+#규칙3 : 남은 글자중 처음세자리 + 글자갯수 + 글자 내 'e'갯수 + '!' 로 구성
+
+url='http://naver.com'
+my_str=url.replace("http://","") #규칙1
+my_str=my_str[:my_str.index(".")] #규칙2
+pwd=my_str[:3]+str(len(my_str))+str(my_str.count('e'))+"!" #규칙3
+print(pwd)
+
+#---------------------------------------------------------------------------------
+
+#리스트 []
+subway1=10
+subway2=20
+subway3=30
+
+subway=[10,20,30]
+
+subway=['유재석','조세호','박명수']
+
+#조세호는 몇번째 칸에 타고 있는가
+print(subway.index('조세호'))
+
+#하하가 다음정류장에서 탐
+subway.append('하하')
+print(subway)
+
+#정형돈이 유재석과 조세호 사이에 탐
+subway.insert(1,'정형돈')
+print(subway)
+
+#지하철에 있는 사람들을 한명씩 뒤에서 꺼냄
+print(subway.pop())
+print(subway)
+
+#같은 이름의 사람이 몇명 있는지 확인
+subway.append('유재석')
+print(subway.count('유재석'))
+
+#정렬
+num_list=[5,2,4,3,1]
+num_list.sort()
+print(num_list)
+
+#내림차순 정렬
+num_list.reverse()
+print(num_list)
+
+#삭제
+num_list.clear()
+print(num_list)
+
+#다양한 자료형
+mix_list=['조세호',20,True]
+print(mix_list)
+
+#리스트 확장
+num_list.extend(mix_list)
+print(num_list)
+
+#---------------------------------------------------
+#사전
+
+cabinet={3:'유재석',100:'김태호'}
+print(cabinet[3])
+
+print(cabinet.get(3))
+
+print(cabinet.get(5))
+print('hi')
