@@ -266,5 +266,35 @@ print(cabinet[3])
 
 print(cabinet.get(3))
 
-print(cabinet.get(5))
+print(cabinet.get(5,'사용가능'))
 print('hi')
+
+print(3 in cabinet) # 값이 있는지 없는지
+print(5 in cabinet)
+
+cabinet={"A-3":'유재석','B-100':'김태호'}
+print(cabinet['A-3'])
+
+#추가
+
+cabinet['A-3']='김종국' #업데이트
+cabinet['C-20']='조세호'
+
+print(cabinet)
+
+#삭제
+del cabinet['A-3']
+print(cabinet)
+
+#key만 출력
+print(cabinet.keys())
+
+#value만 출력
+print(cabinet.values())
+
+#key, value
+print(cabinet.items())
+
+#전체 삭제
+cabinet.clear()
+print(cabinet)
