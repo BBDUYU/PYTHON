@@ -298,3 +298,88 @@ print(cabinet.items())
 #전체 삭제
 cabinet.clear()
 print(cabinet)
+#------------------------------------------------------
+
+#튜플
+
+menu=('돈까스','치즈돈까스')
+print(menu[0])
+print(menu[1])
+
+#menu.add('생선까스') - 튜플은 추가 불가
+
+name,age,hobby='김종국',20,'운동'
+print(name,age,hobby)
+#----------------------------------------------------
+
+#집합 (세트)
+#중복 안됨, 순서 없음
+my_set={1,2,3,3,3}
+print(my_set)
+
+java={'유재석','김태호','양세형'}
+python=set(['유재석','박명수'])
+
+#교집합 (java와 python 모두할 수 있는)
+print(java & python)
+print(java.intersection(python))
+
+#합집합 (java나 python)
+print(java | python)
+print(java.union(python))
+
+#차집합 (java는 할 수 있지만 python은 모르는)
+print(java-python)
+print(java.difference(python))
+
+#python 할 줄 아는 사람이 늘어난 경우 - 집합에 추가
+
+python.add('김태호')
+print(python)
+
+#java를 할 수 없게됨 - 집합에서 삭제
+
+java.remove('김태호')
+print(java)
+#----------------------------------------------------
+#자료구조의 변경
+menu={'커피','우유','주스'}
+print(menu,type(menu))  #set {}
+
+menu=list(menu)
+print(menu,type(menu)) #list []
+
+menu=tuple(menu)
+print(menu,type(menu)) #tuple ()
+
+menu=set(menu)
+print(menu,type(menu))
+#-----------------------------------------------------
+#퀴즈
+#댓글 작성자들 중에 추첨을 통해 1명은 치킨, 3명은 커피 쿠폰을 받게된다
+#추첨 프로그램을 작성하시오
+
+#조건1 : 편의상 댓글은 20명이 작성하였고 아이디는 1~20이라고 가정
+#조건2 : 댓글 내용과 상관 없이 무작위로 추첨하되 중복 불가
+#조건3 : random 모듈의 shuffle과 sample 활용
+
+#출력예제
+# -- 당첨자 발표 --
+#치킨 당첨자 : 1
+#커피 당첨자 : [2,3,4]
+# -- 축하합니다 --
+
+from random import *
+users=range(1,21) #1부터 20까지 생성
+print(type(users)) #type = range
+users=list(users) #type을 list로 변경
+print(users)
+shuffle(users)
+print(users)
+
+winners=sample(users,4) #4명 중 1명은 치킨, 3명은 커피
+print('-- 당첨자 발표 --')
+print('치킨 당첨자 : {}'.format(winners[0]))
+print('커피 당첨자 : {}'.format(winners[1:]))
+print('-- 축하합니다 --')
+#-----------------------------------------------------------------
