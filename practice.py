@@ -142,7 +142,7 @@ index=python.index('n',index+1) #첫 조회 다음위치
 print(index) 
 
 print(python.find('Java')) # find() : 찾으려는 값이 없을시 -1
-print(python.index('Java')) # index() : 찾으려는 값이 없을시 오류
+#print(python.index('Java')) # index() : 찾으려는 값이 없을시 오류
 
 print(python.count('n')) # 찾으려는 단어 갯수
 
@@ -404,3 +404,32 @@ elif 0<=temp and temp<10:
     print('외투를 챙기세요')
 else:
     print('너무추워요')
+#----------------------------------------------------------
+#for 반복문
+for waiting_no in range(1,6):
+    print('대기번호 : {0}'.format(waiting_no))
+
+starbucks=['아이언맨','토르','헐크']
+for customer in starbucks:
+    print("{0}, 커피가 준비되었습니다".format(customer))
+#--------------------------------------------------------
+#while 반복문 
+# customer = '토르'
+# index = 5
+# while index >= 1:
+#     print("{0}, 커피가 준비되었습니다. {1}번 남았습니다".format(customer,index))
+#     index -= 1 
+#     if index == 0:
+#         print('커피는 폐기처분되었습니다')
+
+# customer = '아이언맨'
+# index=1
+# while True:
+#     print("{0}, 커피가 준비되었습니다. 호출{1}회".format(customer,index))
+#     index += 1
+
+customer='토르'
+person='unknown'
+while person!=customer:
+    print('{0}, 커피가 준비되었습니다'.format(customer))
+    person=input('이름이 어떻게 되세요?')
