@@ -107,4 +107,60 @@ def profile(name,age,*language): # * 가변인자
 profile('유재석',20,'Python','Java','C','C++','C#','JavaScript')
 profile('김태호',25,'Kotlin','Swift')
 #------------------------------------------------------------------------------------
-#지역변수와 전역변수
+#지역변수(함수 내에서만 사용)와 전역변수(프로그램 내에서 사용)
+gun=10
+def checkpoint(soldiers): #경계근무
+    global gun #전역공간에 있는 gun 사용
+    gun=gun-soldiers
+    print('[함수 내] 남은 총 : {0}'.format(gun))
+
+def checkpoint_ret(gun,soldiers):
+    gun=gun-soldiers
+    print('[함수 내] 남은 총 : {0}'.format(gun))
+    return gun
+
+print('전체 총 : {0}'.format(gun))
+#checkpoint(2) #2명이나감
+gun=checkpoint_ret(gun,2)
+print('남은 총 : {0}'.format(gun))
+#-----------------------------------------------------------------------------
+#함수 퀴즈
+#표준 체중을 구하는 프로그램
+#표준체중 : 각 개인의 키에 적당한 체중
+# (성별에 따른 공식) 
+#남자 : 키 x 키 x 22
+#여자 : 키 x 키 x 21
+#조건 1 : 표준 체중은 별도의 함수 내에서 계산
+#           * 함수명 : std_weight
+#           * 전달값 : 키(height),성별(gender)
+#조건 2 : 표준 체중은 소수점 둘째 자리까지 표시
+#출력 예제
+#키 175cm 남자의 표준 체중은 67.38kg 입니다.
+
+def std_weight(height,gender): #키는 m단위
+    if gender=='남자':
+        return height*height*22
+    else:
+        return height*height*21
+height=175 #cm단위
+gender='남자'
+weight=round(std_weight(height/100,gender),2) #round를 이용해 소수점 두자리까지 표시
+print('키 {0}cm {1}의 표준 체중은 {2}kg 입니다.'.format(height,gender,weight))
+#----------------------------------------------------------------------------
+#표준 입출력
+print('Python','Java','JavaScript',sep=',',end='?') #end=문장의 끝을 ?로 바꾸면서 줄바꿈을 없앰
+print('무엇이 더 재밌을까요')
+
+import sys
+print('Python','Java',file=sys.stdout) #표준출력
+print('Python','Java',file=sys.stderr) #표준에러
+
+scores={'수학':0,'영어':50,'코딩':100}
+for subject,score in scores.items(): 
+    print(subject.ljust(8),str(score).rjust(4),sep=':') #ljust(8)=총 8칸의 공간을 확보한 뒤 왼쪽으로 정렬 left, rjust(4)=총 4칸의 공간을 확보한 뒤 오른쪽으로 정렬 right
+
+for num in range(1,21):
+    print('대기번호 : '+str(num).zfill(3)) #zfill(3)=3칸을 확보하고 빈공간을 0으로채워라
+
+answer=input('아무 값이나 입력 : ')
+print('입력하신 값은 '+answer+'입니다')
