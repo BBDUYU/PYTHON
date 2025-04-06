@@ -22,9 +22,13 @@
 
 # 일반 유닛
 class Unit:
-    def __init__(self,name,hp): # init 생성자 
+    def __init__(self,name,hp,speed): # init 생성자 
         self.name=name #멤버변수 : 클래스 내에서 정의된 변수
         self.hp=hp
+        self.speed=speed
+    def move(self, location):
+        print('[지상 유닛 이동]')
+        print('{0} : {1} 방향으로 이동 [속도 {2}]'.format(self.name,location,self.speed))
 
 # marine1 = Unit('마린',40,5)
 # marine2 = Unit('마린',40,5)
@@ -41,8 +45,8 @@ class Unit:
 
 #공격 유닛
 class AttackUnit(Unit):
-    def __init__(self,name,hp,damage): # init 생성자 
-        Unit.__init__(self,name,hp) #상속
+    def __init__(self,name,hp,speed,damage): # init 생성자 
+        Unit.__init__(self,name,hp,speed) #상속
         self.damage=damage
     def attack(self,location):
         print('{0} : {1} 방향으로 공격합니다 [공격력 : {2}]'.format(self.name,location,self.damage))
@@ -62,28 +66,61 @@ class Flyable:
     def __init__(self,flying_speed):
         self.flying_speed=flying_speed
     def fly(self,name,location):
-        print('{0} : {1} 방향으로 날아갑니다 [속도 : {2}]'.format(name,location,self.flying_speed))
+        print('{0} : {1} 방향으로 비행 [속도 : {2}]'.format(name,location,self.flying_speed))
 
 class FlyableAttackUnit(AttackUnit,Flyable): #다중상속
     def __init__(self, name, hp, damage,flying_speed):
-        AttackUnit.__init__(self,name, hp, damage)
+        AttackUnit.__init__(self,name, hp,0, damage) #지상 speed=0
         Flyable.__init__(self,flying_speed)
+    def move(self,location):
+        print('[공중 유닛 이동]')
+        self.fly(self.name,location)
+#벌쳐 : 지상유닛, 기동성 좋음
+vulture=AttackUnit('벌쳐',80,10,20)
 
-#발키리 : 공중 공격 유닛
-valkyrie=FlyableAttackUnit('발키리',200,6,5)
-valkyrie.fly(valkyrie.name,'3시')
+#배틀크루저 : 공중유닛
+battlecruiser=FlyableAttackUnit('배틀크루저',500,25,3)
+vulture.move('11시')
+#battlecruiser.fly(battlecruiser.name,'9시')
+battlecruiser.move('9시')
+
+
 
 #파이어뱃 : 공격 유닛, 화염방사기
-firebat1 = AttackUnit('파이어뱃',50,16)
-firebat1.attack('5시')
+# firebat1 = AttackUnit('파이어뱃',50,16)
+# firebat1.attack('5시')
 
-firebat1.damaged(25)
-firebat1.damaged(25)
+# firebat1.damaged(25)
+# firebat1.damaged(25)
 #------------------------------------------------------------------------
-#   Unit            Flyable
+#   Unit(move())    Flyable
 #    |                 |
 #   AttackUnit         |
 #     \                |
 #      \               |
-#       FlyableAttackUnit
+#       FlyableAttackUnit (move() 재정의)
 #------------------------------------------------------------------------
+
+#건물
+class BuildingUnit(Unit):
+    def __init__(self, name, hp, location):
+        #Unit.__init__(self,name,hp,0)
+        super().__init__(name,hp,0) #super()는 self없이
+        self.location=location
+
+#서플라이 디폿 : 건물, 1개 건물 = 8유닛
+supply_depot=BuildingUnit('서플라이 디폿',500,'7시')
+
+
+
+
+#패스
+# 아무것도 안하고 일단 넘김
+# def game_start():
+#     print('[알림] 새로운 게임을 시작합니다')
+
+# def game_over():
+#     pass
+
+# game_start()
+# game_over()
