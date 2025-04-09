@@ -124,3 +124,66 @@ supply_depot=BuildingUnit('서플라이 디폿',500,'7시')
 
 # game_start()
 # game_over()
+#-----------------------------------------------------------------------
+#퀴즈
+#주어진 코드를 활용해 부동산 프로그램을 작성
+#출력예제
+# 총 3대의 매물이 있습니다
+# 강남 아파트 매매 10억 2010년
+# 마포 오피스텔 전세 5억 2007년
+# 송파 빌라 월세 500/50 2000년
+
+#코드
+
+class House:
+    #매물 초기화
+    def __init__(self,location,house_type,deal_type,price,completion_year):
+        self.location=location
+        self.house_type=house_type
+        self.deal_type=deal_type
+        self.price=price
+        self.completion_year=completion_year
+
+    #매물 정보 표시
+    def show_detail(self):
+        print(self.location, self.house_type, self.deal_type, self.price, self.completion_year)
+
+houses=[]
+house1=House('강남','아파트','매매','10억','2010년')
+house2=House('마포','오피스텔','전세','5억','2007년')
+house3=House('송파','빌라','월세','500/50','2000년')
+houses.append(house1)
+houses.append(house2)
+houses.append(house3)
+
+print('총 {0}대의 매물이 있습니다'.format(len(houses)))
+for house in houses:
+    house.show_detail()
+#------------------------------------------------------------------------------
+#예외처리
+try:
+    print('나누기 전용 계산기')
+    nums=[]
+    nums.append(int(input('첫 번째 숫자를 입력하세요 : ')))
+    nums.append(int(input('두 번째 숫자를 입력하세요 : ')))
+    nums.append(int(nums[0]/nums[1]))
+    print('{0} / {1} = {2}'.format(nums[0],nums[1],nums[2]))
+    
+except ValueError:
+    print('에러발생')
+except ZeroDivisionError as err: #0으로 나눌수 없다는 에러메시지 출력
+    print(err) #division by zero
+except:
+    print('알 수 없는 에러가 발생')
+#에러 발생시키기
+try:
+    print('한 자리 숫자 나누기 전용 계산기')
+    num1=int(input('첫 번째 숫자를 입력 :'))
+    num2=int(input('두 번째 숫자를 입력 :'))
+    if num1>=10 or num2>=10:
+        raise ValueError
+    print('{0}/{1}={2}'.format(num1,num2,int(num1/num2)))
+except ValueError:
+    print('잘못된 값을 입력하였습니다 한 자리 숫자만 입력하세요')
+#-----------------------------------------------------------------------------------
+#사용자 정의 예외처리
