@@ -228,3 +228,23 @@ finally: #에러가 발생하는것에 상관없이 무조건 실행
     print('계산기를 종료합니다') 
 #-----------------------------------------------------------------------
 #모듈
+#import theater_module
+#theater_module.price(3) #3명이서 영화
+#theater_module.price_morning(4) #4명이서 조조할인
+#theater_module.price_soldier(5) #군인 5명
+
+#import theater_module as mv # 별명설정으로 줄이기
+#mv.price(3)
+#mv.price_morning(4)
+#mv.price_soldier
+
+# from theater_module import * # 모듈에있는 모든것을 사용
+# price(3)
+# price_morning(4)
+# price_soldier(5)
+
+from theater_module import price,price_morning # 원하는것만 import
+price(5)
+price_morning(6)
+#-----------------------------------------------------------------------
+#패키지
