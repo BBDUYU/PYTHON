@@ -13,3 +13,8 @@
 from travel import *
 trip_to=thailand.ThailandPackage() # 공개범위를 설정하기 위해 __init__.py 에 Thailand 모듈추가
 trip_to.detail()
+
+import inspect
+import random
+print(inspect.getfile(random))
+print(inspect.getfile(thailand))
