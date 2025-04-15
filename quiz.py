@@ -159,3 +159,15 @@ while(True):
     except SoldOutError:
         print('재고가 소진되어 더 이상 주문을 받지 않겠습니다')
         break
+#------------------------------------------------------------------
+#퀴즈
+#프로젝트 내에 나만의 시그니처를 남기는 모듈
+# 조건 : 모듈 파일명은 byme.py로 작성
+# 모듈 사용 예제
+import byme
+byme.sign()
+
+# 출력 예제
+# 이 프로그램은 나도코딩에 의해 만들어졌습니다
+# 유튜브 : http://youtube.com
+# 이메일 : nadocoding@gmail.com

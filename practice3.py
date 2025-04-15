@@ -247,4 +247,49 @@ from theater_module import price,price_morning # 원하는것만 import
 price(5)
 price_morning(6)
 #-----------------------------------------------------------------------
-#패키지
+#내장함수
+#https://docs.python.org/3/py-modindex.html
+#input : 사용자의 입력을 받는 함수
+#dir : 어떤 객체를 넘겨줬을 때 그 객체가 어떤 변수와 함수를 가지고 있는지 표시
+# print(dir())
+# import random
+# print(dir())
+# import pickle
+# print(dir())
+lst=[1,2,3]
+print(dir(lst))
+
+name='Jim'
+print(dir(name))
+#------------------------------------------------------------------------
+#외장함수
+#https://docs.python.org/3/py-modindex.html
+# glob : 경로 내의 폴더 / 파일 목록 조회 (윈도우 dir)
+import glob
+print(glob.glob('*.py')) #확장자가 py인 모든파일
+
+# os : 운영체제에서 제공하는 기본 기능
+import os
+# print(os.getcwd()) #현재 디렉터리
+# folder = 'sample_dir'
+# if os.path.exists(folder):
+#     print('이미 존재하는 폴더입니다')
+#     os.rmdir(folder)
+#     print(folder,'폴더가 삭제되었습니다')
+# else:
+#     os.makedirs(folder) #폴더생성
+#     print(folder,'폴더가 생성되었습니다')
+#print(os.listdir()) # 현재 디렉터리와 파일들
+
+#time : 시간 관련 함수
+import time
+print(time.localtime)
+print(time.strftime('%Y-%m-%d %H:%M:%S'))
+
+import datetime
+print('오늘 날짜는 ',datetime.date.today())
+
+# timedelta : 두 날짜 사이의 간격
+today=datetime.date.today() #오늘날짜 저장
+td=datetime.timedelta(days=100) #100일 저장
+print('우리가 만난지 100일은 ',today+td) #오늘부터 100일 후
