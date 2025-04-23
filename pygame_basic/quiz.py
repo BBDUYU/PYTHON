@@ -13,6 +13,7 @@
 # 3. 똥 : 70 * 70 - enemy.png
 
 import pygame 
+import random
 #---------------------------------------------------------- 
 pygame.init() #초기화 반드시 해야함
 
@@ -44,6 +45,15 @@ character_y_pos=screen_height - character_height
 to_x=0
 character_speed=10
 
+#적
+enemy=pygame.image.load('C:\\Users\\tmdwh\\OneDrive\\Desktop\\VSC\\PYTHON\\pygame_basic\\enemy.png')
+enemy_size=enemy.get_rect().size #이미지의 크기를 구함
+enemy_width=enemy_size[0] #캐릭터의 가로크기
+enemy_height=enemy_size[1] #캐릭터의 세로크기
+enemy_x_pos=random.randint(0,screen_width-enemy_width)
+enemy_y_pos=0
+enemy_speed=10
+
 # 이벤트 루프
 running=True #게임이 진행중인가
 while running:
@@ -73,12 +83,27 @@ while running:
     elif character_x_pos>screen_width-character_width:
         character_x_pos=screen_width-character_width
 
+    enemy_y_pos += enemy_speed
+    if enemy_y_pos > screen_height:
+        enemy_y_pos=0
+        enemy_x_pos=random.randint(0,screen_width-enemy_width)
     # 4. 충돌처리
+    character_rect=character.get_rect()
+    character_rect.left=character_x_pos
+    character_rect.top=character_y_pos
 
+    enemy_rect=enemy.get_rect()
+    enemy_rect.left=enemy_x_pos
+    enemy_rect.top=enemy_y_pos
+
+    if character_rect.colliderect(enemy_rect):
+        print('충돌')
+        running=False
+    
     # 5. 화면에 그리기
     screen.blit(background,(0,0))
     screen.blit(character,(character_x_pos,character_y_pos))
-
+    screen.blit(enemy,(enemy_x_pos,enemy_y_pos))
 
     pygame.display.update() #게임화면 다시그리기
 
