@@ -42,9 +42,9 @@ character_height=character_size[1]
 character_x_pos=(screen_width/2)-(character_width/2)
 character_y_pos=screen_height - character_height
 
-to_x=0
+character_to_x_LEFT=0
+character_to_x_RIGHT=0
 character_speed=10
-
 #적
 enemy=pygame.image.load('C:\\Users\\tmdwh\\OneDrive\\Desktop\\VSC\\PYTHON\\pygame_basic\\enemy.png')
 enemy_size=enemy.get_rect().size #이미지의 크기를 구함
@@ -67,16 +67,19 @@ while running:
         
         if event.type==pygame.KEYDOWN:
             if event.key==pygame.K_LEFT:
-                to_x -=character_speed
+                character_to_x_LEFT -= character_speed
             elif event.key==pygame.K_RIGHT:
-                to_x +=character_speed
+                character_to_x_RIGHT += character_speed
             
         if event.type==pygame.KEYUP:
-            if event.key==pygame.K_LEFT or event.key==pygame.K_RIGHT:
-                to_x=0
+            if event.key==pygame.K_LEFT:
+                character_to_x_LEFT=0
+            elif event.key == pygame.K_RIGHT:
+                character_to_x_RIGHT=0
+            
 
     # 3. 게임 캐릭터 위치 정의의
-    character_x_pos += to_x
+    character_x_pos += character_to_x_LEFT+character_to_x_RIGHT
 
     if character_x_pos<0:
         character_x_pos=0
