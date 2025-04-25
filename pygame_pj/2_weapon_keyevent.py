@@ -89,14 +89,19 @@ while running:
     # 무기 위치 조정
     weapons=[ [w[0],w[1] - weapon_speed] for w in weapons] # 무기 위치를 위로
 
+    # 천장에 닿은 무기 없애기
+    weapons=[ [w[0],w[1]] for w in weapons if w[1] > 0] # y좌표가 0보다 큰 것만 리스트, 즉 천장에 닿는 순간 무기가 리스트에서 빠짐 
+
     # 4. 충돌처리
 
     # 5. 화면에 그리기
     screen.blit(background,(0,0))
-    screen.blit(stage,(0,screen_height-stage_height))
-    screen.blit(character,(character_x_pos,character_y_pos))
     for weapon_x_pos, weapon_y_pos in weapons:
         screen.blit(weapon,(weapon_x_pos, weapon_y_pos))
+    screen.blit(stage,(0,screen_height-stage_height))
+    screen.blit(character,(character_x_pos,character_y_pos))
+    
+    
     pygame.display.update() #게임화면 다시그리기
     
 
