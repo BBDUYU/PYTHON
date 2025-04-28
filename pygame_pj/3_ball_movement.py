@@ -116,12 +116,41 @@ while running:
     # 천장에 닿은 무기 없애기
     weapons=[ [w[0],w[1]] for w in weapons if w[1] > 0] # y좌표가 0보다 큰 것만 리스트, 즉 천장에 닿는 순간 무기가 리스트에서 빠짐 
 
+    # 공 위치 정의
+    for ball_idx, ball_val in enumerate(balls): # 리스트를 순회하며 몇 번째 인지 알려주며 해당하는 값을 가져옴 
+        ball_pos_x = ball_val['pos_x']
+        ball_pos_y = ball_val['pos_y']
+        ball_img_idx = ball_val['img_idx']
+
+        ball_size = ball_images[ball_img_idx].get_rect().size # ball_img_idx에 해당하는 크기를 가져옴
+        ball_width = ball_size[0]
+        ball_height = ball_size[1]
+
+        # 공 가로 위치
+        if ball_pos_x < 0 or ball_pos_x > screen_width - ball_width:
+            ball_val['to_x'] = ball_val['to_x'] * -1 # 공이 벽에 닿았을 때 공 이동위치 변경
+        
+        # 공 세로 위치
+        if ball_pos_y >= screen_height-stage_height-ball_height:
+            ball_val['to_y'] = ball_val['init_spd_y'] #스테이지에 튕겨서 올라가는 처리
+        else: # 그 외에는 속도를 증가
+            ball_val['to_y'] += 0.5
+        
+        ball_val['pos_x'] += ball_val['to_x']
+        ball_val['pos_y'] += ball_val['to_y']
+
     # 4. 충돌처리
 
     # 5. 화면에 그리기
     screen.blit(background,(0,0))
     for weapon_x_pos, weapon_y_pos in weapons:
         screen.blit(weapon,(weapon_x_pos, weapon_y_pos))
+    
+    for idx, val in enumerate(balls):
+        ball_pos_x=val['pos_x']
+        ball_pos_y=val['pos_y']
+        ball_img_idx=val['img_idx']
+        screen.blit(ball_images[ball_img_idx], (ball_pos_x, ball_pos_y))
     screen.blit(stage,(0,screen_height-stage_height))
     screen.blit(character,(character_x_pos,character_y_pos))
     
