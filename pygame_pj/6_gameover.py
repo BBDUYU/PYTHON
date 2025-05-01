@@ -82,7 +82,7 @@ ball_to_remove = -1
 # 폰트 정의
 game_font = pygame.font.Font(None, 40)
 # 게임 시간
-total_time = 5
+total_time = 100
 start_tick = pygame.time.get_ticks() # 시작시간
 
 # 게임종료 메시지 / 타임아웃 / 미션완료
@@ -231,6 +231,10 @@ while running:
         del weapons[weapon_to_remove]
         weapon_to_remove = -1
 
+    # 모든 공을 없앤 경우 게임종료
+    if len(balls)==0:
+        game_result='Mission Complete'
+        running=False
 
     # 5. 화면에 그리기
     screen.blit(background,(0,0))
