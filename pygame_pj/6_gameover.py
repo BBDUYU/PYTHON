@@ -222,6 +222,20 @@ while running:
                         })
 
                 break
+        else: #계속 게임 진행
+            continue #안쪽 for문 조건이 맞지않으면 continue
+        break # 안쪽 for문에서 break를 만나면 실행 2중 for문 한번에 탈출
+
+        # for 바깥조건:
+            # 바깥동작
+            # for 안쪽조건:
+                # 안쪽동작
+                # if 충돌:
+                    # break
+            # else:
+                # continue
+            # break
+
     # 충돌된 공 없애기
     if ball_to_remove > -1:
         del balls[ball_to_remove] 
