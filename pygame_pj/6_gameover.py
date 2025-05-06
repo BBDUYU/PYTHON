@@ -88,10 +88,22 @@ start_tick = pygame.time.get_ticks() # 시작시간
 # 게임종료 메시지 / 타임아웃 / 미션완료
 game_result = 'Game Over'
 
+#게임 시작 메시지
+start='Game Start'
+
+
 
 
 # 이벤트 루프
 running=True #게임이 진행중인가
+
+start_msg = game_font.render(start,True,(255,255,0))
+start_msg_rect = start_msg.get_rect(center=(int(screen_width / 2), int(screen_height / 2)))
+screen.blit(start_msg,start_msg_rect)
+pygame.display.update()
+
+pygame.time.delay(2000)
+
 while running:
     dt=clock.tick(60) #게임화면의 초당 프레임수를 설정
 
@@ -267,6 +279,10 @@ while running:
     elapsed_time = (pygame.time.get_ticks() - start_tick) / 1000 # ms -> s
     timer = game_font.render('Time : {}'.format(int(total_time - elapsed_time)),True,(255,255,255))
     screen.blit(timer,(10,10))
+
+    
+    
+    
 
     # 시간초과
     if total_time - elapsed_time <= 0:
