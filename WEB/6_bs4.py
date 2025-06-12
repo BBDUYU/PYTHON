@@ -19,3 +19,8 @@ print(soup.find(attrs={'class':'GlobalNavigationBar__link--WMOzG'})) #셀레니�
 
 # 예상 결과
 # <a class="GlobalNavigationBar__link--WMOzG" aria-current="true" href="/index">홈</a>
+
+rank1=soup.find('a',attrs={'class':'ContentAuthor__author--CTAAP'})
+print(rank1.a.get_text())
+# next_sibling : 다음 element로 넘어감
+# previous_sibling : 이전 element로 돌아감
